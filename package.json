@@ -1,0 +1,31 @@
+{
+  "name": "koa-sample-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dholness2/koa-sample-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dholness2/koa-sample-project/issues"
+  },
+  "homepage": "https://github.com/Dholness2/koa-sample-project#readme",
+  "dependencies": {
+    "joi": "^14.3.1",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "pg": "^7.9.0",
+    "typeorm": "^0.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
