@@ -8,6 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      state: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      zip: {
+        type: Sequelize.STRING
+      },
       dateOfBirth: {
         type: Sequelize.DATE
       },
