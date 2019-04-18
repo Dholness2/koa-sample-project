@@ -1,4 +1,5 @@
 const KoaRouter = require("koa-router");
+const likeRouter = require("./like");
 const UserService = require("../services/userService");
 const UserController = require("../controllers/userController");
 
