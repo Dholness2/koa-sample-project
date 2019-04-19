@@ -5,13 +5,13 @@ class ProfileService {
     return await Profile.findOrCreate({ ...body });
   }
 
-  async update(ctx) {
+  async update(body, userId) {
     const profile = await Profile.findOne({
       where: {
         user_id: userId
       }
     });
-    return await profile.update(ctx.body);
+    return await profile.update(body);
   }
 
   async getById(profileId) {

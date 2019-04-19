@@ -71,15 +71,15 @@ npm test
            }
          ```
 
-    ##v2
+##v2
 
-    1. path:
+  1. path to register user:
 
     ```
        POST http://localhost:3000/v2/register
     ```
 
-    expected Payload:
+    Expected Payload:
 
     ```
       {"firstName": "foo",
@@ -89,13 +89,36 @@ npm test
     ```
 
     Responds with:
-    Authentication cookies: koa:sess= and koa:sess.sig=  
+     Authentication cookies: koa:sess= and koa:sess.sig=  
      Response object users id:
 
     ```
      {
       "status": "success",
        "data": 1
+      }
+    ```
+
+2. path to login:
+
+    ```
+       POST http://localhost:3000/v2/login
+    ```
+
+    expected Payload:
+
+    ```
+      {"email": "dholness2@gmail.com",
+       "password": "password123" }
+    ```
+
+    Responds with:
+    Authentication cookies: koa:sess= and koa:sess.sig=  
+    
+    ```
+     {
+      "status": "success",
+      
       }
     ```
 
@@ -117,7 +140,7 @@ Response object will have legacey username payload instead of v2 firstName/lastN
         }
       ```
 
-3.  path to create a like for user 1 to user 2:
+4.  path to create a like for user 1 to user 2:
 
     ```
     POST http://localhost:3000/v2/likes
@@ -132,11 +155,40 @@ Response object will have legacey username payload instead of v2 firstName/lastN
     }
     ```
 
-4.  Path to get incoming likes for user 1 :
+5.  Path to get incoming likes for user 1 :
     ```
     GET http://localhost:3000/v2/user/:id/likes?type=incoming
     ```
-5.  Path to get out going likes from user 1 :
+6.  Path to get out going likes from user 1 :
     ```
     GET http://localhost:3000/v2/user/:id/likes?type=outgoing
     ```
+7. Path to create user profile:
+  ```
+    POST http://localhost:3000/v2/profiles
+    ```
+    ExpectedPayload:
+    ```
+    {
+       "state": "foo",
+       "city": "bar",
+       "zip": 11003,
+       "dateOfBirth": "2016-01-01 00:00:00+00:00",
+       "userId":1
+       }
+    ```
+8. Path to edit user Profile:
+   ```
+    PUT http://localhost:3000/v2/users/:id/profiles
+    ```
+    ExpectedPayload:
+    ```
+    {
+       "state": "foo",
+       "city": "bar",
+       "zip": 11003,
+       "dateOfBirth": "2016-01-01 00:00:00+00:00",
+       "user_id:":1
+       }
+    ```
+   

@@ -18,7 +18,8 @@ class ProfileController {
   }
 
   async update(ctx) {
-    const newprofile = await this.service.update(ctx);
+    const userId = ctx.params.id;
+    const newprofile = await this.service.update(ctx.body,userId);
     if (newprofile == null) {
       return this._notFoundResponse(ctx);
     }
