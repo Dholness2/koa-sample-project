@@ -28,25 +28,37 @@ npm test
 
 ## v1 routes
 
-1.  path POST http://localhost:3000/v1/register
-2.  expectedPayload:
-    {"name": "donovan holness",
-    "email": "dholness2@gmail.com",
-    "password": "password123" }
-    Responds with:
-    authentication cookies: koa:sess= and koa:sess.sig=  
-    response object users id:
+1. path:
+   ```
+      POST http://localhost:3000/v1/register
+   ```
+   expected Payload:
+   ```
+     {"name": "donovan holness",
+      "email": "dholness2@gmail.com",
+      "password": "password123" }
+   ```
+   Responds with:
+   Authentication cookies: koa:sess= and koa:sess.sig=  
+   Response object users id:
+   ```
     {
-    "status": "success",
-    "data": 1
-    }
-3.  path GET http://localhost:3000/v1/users/1 (include cookies to retrieve users)
-4.  response object will have legacey username payload instead of v2 firstName/lastName:
-    {
-    "status": "ok",
-    "data": {
-    "name": "donovan holness",
-    "email": "dholness2@gmail.com",
-    "id": 1
-    }
-    }
+     "status": "success",
+      "data": 1
+     }
+   ```
+2. path(include cookies to retrieve users):
+   ```
+     GET http://localhost:3000/v1/users/1
+   ```
+   Response object will have legacey username payload instead of v2 firstName/lastName:
+
+      ```
+         {"status": "ok",
+           "data": {
+             "name": "donovan holness",
+             "email": "dholness2@gmail.com",
+             "id": 1
+             }
+        }
+      ```
