@@ -66,7 +66,6 @@ describe("User Controller", function() {
     sinon.stub(testService, "getUserById").callsFake(stubCreate);
 
     await testController.find(ctx);
-    console.log(ctx.body);
     expect(ctx.body).to.eql(expectedResult);
   });
 });

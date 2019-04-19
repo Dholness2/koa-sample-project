@@ -3,7 +3,7 @@ const session = require("koa-session");
 const koaBody = require("koa-body");
 const logger = require("koa-logger");
 
-const buildAuthRouter = require("./routes/authentication").buildRouter;
+const buildAuthRouter = require("./routes/authentication");
 const buildUserRouter = require("./routes/user");
 const like = require("./routes/like");
 const profile = require("./routes/profile");

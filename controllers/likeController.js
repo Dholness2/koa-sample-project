@@ -4,7 +4,7 @@ class LikeController {
   }
 
   async create(ctx) {
-    const newLike = await this.service.create(ctx);
+    const newLike = await this.service.create(ctx.body);
     ctx.body = {
       status: "created",
       data: newLike
@@ -12,7 +12,7 @@ class LikeController {
   }
 
   async find(ctx) {
-    const like = await this.service.getByID(ctx);
+    const like = await this.service.getById(ctx.params.id);
     if (like == null) {
       return this._notFoundResponse(ctx);
     }
@@ -23,18 +23,25 @@ class LikeController {
   }
 
   async findIncoming(ctx) {
-    const userId = ctx.params.id;
-    const type = ctx.params.type;
-    const like = null;
+    const { id, type } = ctx.params;
     switch (type) {
       case "incoming":
-        like = await this.service.getLikeRequestByID(userId);
+        return this._foundResponse(
+          ctx,
+          await this.service.getLikeRequestByID(id)
+        );
+        break;
       case "outgoing":
-        like = await this.service.getSentLikesByID(userId);
+        return this._foundResponse(
+          ctx,
+          await this.service.getSentLikesByID(id)
+        );
+        break;
+      default:
+        this._notFoundResponse(ctx);
     }
-    if (like == null) {
-      return this._notFoundResponse(ctx);
-    }
+  }
+  _foundResponse(ctx, like) {
     ctx.body = {
       status: "success",
       data: like

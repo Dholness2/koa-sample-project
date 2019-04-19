@@ -16,7 +16,7 @@ const authenticationController = new AuthenticationController(
 
 function buildRouter(prefix) {
   const router = new KoaRouter();
-  router.Router.prefix(prefix);
+  router.prefix(prefix);
   router
     .post("/login", async ctx => {
       console.log("in route");

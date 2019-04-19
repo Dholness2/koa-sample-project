@@ -1,8 +1,7 @@
 const Like = require("../models").Like;
 
 class LikeService {
-  async create(ctx) {
-    const { body } = ctx.request;
+  async create(body) {
     return await Like.create({
       fromUser: body.fromUser,
       toUser: body.toUser
@@ -25,8 +24,7 @@ class LikeService {
     });
   }
 
-  async getById(ctx) {
-    const likeId = ctx.params.id;
+  async getById(likeId) {
     return await Like.findOne({
       where: {
         id: likeId
