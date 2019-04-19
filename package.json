@@ -21,12 +21,8 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "chai": "^4.2.0",
-    "joi": "^14.3.1",
-    "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
-    "koa-joi-swagger": "^1.1.1",
-    "koa-jwt": "https://github.com/clintmod/jwt.git#v3.2.3-beta",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.1",

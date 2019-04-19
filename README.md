@@ -7,7 +7,7 @@ Requires
 1. Docker
 2. Docker-compose
 3. macOS
-4. Node version: v8.11.4 and up (Optional)
+4. Node version: v8.11.4
 
 ##
 
@@ -17,11 +17,15 @@ To run:
 brew install docker
 brew install docker-compose
 docker-compose up
+brew install node
+npm install
+npm start
 ```
-
+## Tips
+   App requires two session cookies for testing. Suggest using postman after regeistration for manually testing end points.
 ##
 
-To Test:
+To Run unit Tests:
 
 ```
 npm install
@@ -95,7 +99,7 @@ npm test
       }
     ```
 
-3.  path(include cookies to retrieve users):
+3.  path(include cookies to retrieve users, suggest postman for easy cookie mangement):
 
 ```
   GET http://localhost:3000/v2/users/1
@@ -118,20 +122,21 @@ Response object will have legacey username payload instead of v2 firstName/lastN
     ```
     POST http://localhost:3000/v2/likes
     ```
+
     Request Payload:
 
-     ```
-     {
-     "fromUser": 1,
-     "toUser": 2
+    ```
+    {
+    "fromUser": 1,
+    "toUser": 2
     }
     ```
 
-4. Path to get incoming likes for user 1 :
-   ```
-   GET http://localhost:3000/v2/user/:id/likes?type=incoming
-   ```
-5. Path to get out going likes from user 1 :
-   ```
-   GET http://localhost:3000/v2/user/:id/likes?type=outgoing
-   ```
+4.  Path to get incoming likes for user 1 :
+    ```
+    GET http://localhost:3000/v2/user/:id/likes?type=incoming
+    ```
+5.  Path to get out going likes from user 1 :
+    ```
+    GET http://localhost:3000/v2/user/:id/likes?type=outgoing
+    ```

@@ -20,15 +20,25 @@ describe("Profile controller", function() {
     };
     const testService = new ProfileService();
     const testController = new ProfileController(testService);
-    const expectedResult = { status: "success", data: 1 };
+    const testProfile = {
+      id: 1,
+      state: "foo",
+      city: "bar",
+      zip: 11003,
+      dateOfBirth: "2016-01-01 00:00:00+00:00"
+    };
+    const expectedResult = { status: "success", data: testProfile };
     const stubCreate = () => {
-      return {
-        id: 1,
-        state: "foo",
-        city: "bar",
-        zip: 11003,
-        dateOfBirth: "2016-01-01 00:00:00+00:00"
-      };
+      return [
+        {
+          id: 1,
+          state: "foo",
+          city: "bar",
+          zip: 11003,
+          dateOfBirth: "2016-01-01 00:00:00+00:00"
+        },
+        true
+      ];
     };
     sinon.stub(testService, "create").callsFake(stubCreate);
 
@@ -52,7 +62,7 @@ describe("Profile controller", function() {
         dateOfBirth: "2016-01-01 00:00:00+00:00",
         userId: 1
       },
-      status: "ok"
+      status: "success"
     };
     const stubCreate = () => {
       return {

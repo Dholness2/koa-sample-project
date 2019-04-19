@@ -33,7 +33,6 @@ describe("User Controller", function() {
     sinon.stub(testService, "create").callsFake(stubCreate);
 
     await testController.create(ctx);
-    console.log(ctx.body);
     expect(ctx.body).to.eql(expectedResult);
   });
 

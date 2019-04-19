@@ -1,12 +1,13 @@
-FROM node:8.15.1-alpine
+FROM mhart/alpine-node:latest
 
-WORKDIR /usr/app
+RUN mkdir /app
+WORKDIR /app
 
-COPY package.json .
+COPY package.json /app
 
-RUN npm install --quiet
 
-COPY . .
+RUN node -v
+RUN npm install
 
 
 
