@@ -8,7 +8,7 @@ module.exports.buidlLeagaceyPayload = ctx => {
   };
 };
 
-module.exports.buildLegaceyRespons = user => {
+module.exports.buildLegaceyResponse = user => {
   return {
     name: user.firstName + " " + user.lastName,
     email: user.email,

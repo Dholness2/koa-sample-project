@@ -34,9 +34,14 @@ class UserController {
 
   buildUserResponse(ctx, user) {
     if (ctx.path.includes(LEGACEY_PAYLOAD_PAY)) {
-      return v1Adapter.buildLegaceyRespons(user);
+      return v1Adapter.buildLegaceyResponse(user);
     }
-    return user;
+    return {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email
+    };
   }
 }
 

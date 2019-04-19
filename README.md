@@ -34,7 +34,7 @@ npm test
    ```
    expected Payload:
    ```
-     {"name": "donovan holness",
+     {"name": "foo bar",
       "email": "dholness2@gmail.com",
       "password": "password123" }
    ```
@@ -62,3 +62,40 @@ npm test
              }
         }
       ```
+ ##v1
+   1. path:
+   ```
+      POST http://localhost:3000/v2/register
+   ```
+   expected Payload:
+   ```
+     {"firstName": "foo",
+       "lastName: "bar"
+      "email": "dholness2@gmail.com",
+      "password": "password123" }
+   ```
+   Responds with:
+   Authentication cookies: koa:sess= and koa:sess.sig=  
+   Response object users id:
+   ```
+    {
+     "status": "success",
+      "data": 1
+     }
+   ```
+  2. path(include cookies to retrieve users):
+   ```
+     GET http://localhost:3000/v1/users/1
+   ```
+   Response object will have legacey username payload instead of v2 firstName/lastName:
+
+      ```
+         {"status": "ok",
+           "data": {
+             "name": "donovan holness",
+             "email": "dholness2@gmail.com",
+             "id": 1
+             }
+        }
+      ```
+   ```

@@ -4,11 +4,9 @@ class ProfileController {
   }
 
   async create(ctx) {
-    const newProfile = await this.service.create(ctx);
-    ctx.body = {
-      status: "success",
-      data: newProfile
-    };
+    const { body } = ctx.request;
+    const newProfile = await this.service.create(body);
+    this._buildResponse(newProfile, ctx);
   }
 
   async show(ctx) {
@@ -16,15 +14,12 @@ class ProfileController {
     if (profile == null) {
       return this._notFoundResponse(ctx);
     }
-    ctx.body = {
-      status: "success",
-      data: profile
-    };
+    this._returnProfile(ctx, profile);
   }
 
   async update(ctx) {
     const newprofile = await this.service.update(ctx);
-    if (profile == null) {
+    if (newprofile == null) {
       return this._notFoundResponse(ctx);
     }
     ctx.body = {
@@ -42,8 +37,23 @@ class ProfileController {
 
   _returnProfile(ctx, profile) {
     ctx.body = {
-      profile: profile
+      status: "success",
+      data: profile
     };
+  }
+
+  _buildResponse(newProfile, ctx) {
+    if (newProfile[1] == false) {
+      ctx.body = {
+        status: "Conflict",
+        message: "Account AlreadyExists"
+      };
+    } else {
+      ctx.body = {
+        status: "success",
+        data: newProfile[0]
+      };
+    }
   }
 }
 

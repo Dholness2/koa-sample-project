@@ -1,9 +1,8 @@
 const Profile = require("../models").Profile;
 
 class ProfileService {
-  async create(ctx) {
-    const { body } = ctx.request;
-    return await Profile.create({ ...body });
+  async create(body) {
+    return await Profile.findOrCreate({ ...body });
   }
 
   async update(ctx) {

@@ -14,15 +14,18 @@ const authenticationController = new AuthenticationController(
   authenticationService
 );
 
-const authenticationRouter = new KoaRouter();
+function buildRouter(prefix) {
+  const router = new KoaRouter();
+  router.Router.prefix(prefix);
+  router
+    .post("/login", async ctx => {
+      console.log("in route");
+      return await authenticationController.create(ctx);
+    })
+    .post("/register", async ctx => {
+      return await userController.create(ctx);
+    });
+  return router;
+}
 
-authenticationRouter
-  .post("/login", async ctx => {
-    console.log("in route");
-    return await authenticationController.create(ctx);
-  })
-  .post("/register", async ctx => {
-    return await userController.create(ctx);
-  });
-
-module.exports = authenticationRouter;
+module.exports = buildRouter;
