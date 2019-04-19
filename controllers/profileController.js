@@ -10,7 +10,7 @@ class ProfileController {
   }
 
   async show(ctx) {
-    const profile = await this.service.getById(ctx);
+    const profile = await this.service.getById(ctx.params.id);
     if (profile == null) {
       return this._notFoundResponse(ctx);
     }

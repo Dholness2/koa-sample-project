@@ -14,8 +14,7 @@ class ProfileService {
     return await profile.update(ctx.body);
   }
 
-  async getById(ctx) {
-    const profileId = ctx.params.id;
+  async getById(profileId) {
     return await Profile.findOne({
       where: {
         id: profileId
