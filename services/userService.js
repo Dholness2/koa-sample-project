@@ -9,8 +9,7 @@ class UserService {
     });
   }
 
-  async getUserById(ctx) {
-    const userId = ctx.params.id;
+  async getUserById(userId) {
     return await User.findOne({
       where: {
         id: userId

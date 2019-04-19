@@ -2,16 +2,16 @@ const KoaRouter = require("koa-router");
 const UserService = require("../services/userService");
 const UserController = require("../controllers/userController");
 
-const userService = new UserService();
-const userController = new UserController(userService);
-const userRouter = new KoaRouter();
+function buildUserRouter(prefix) {
+  const userService = new UserService();
+  const userController = new UserController(userService);
+  const userRouter = new KoaRouter();
 
-userRouter
-  .post("/users", async ctx => {
-    return await userController.create(ctx);
-  })
-  .get("/users/:id", async ctx => {
+  userRouter.prefix(prefix);
+  userRouter.get("/users/:id", async ctx => {
     return await userController.find(ctx);
   });
+  return userRouter;
+}
 
-module.exports = userRouter;
+module.exports = buildUserRouter;
