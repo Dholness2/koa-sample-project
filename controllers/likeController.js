@@ -6,7 +6,7 @@ class LikeController {
   async create(ctx) {
     const newLike = await this.service.create(ctx);
     ctx.body = {
-      status: "success",
+      status: "created",
       data: newLike
     };
   }

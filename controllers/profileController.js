@@ -28,7 +28,7 @@ class ProfileController {
       return this._notFoundResponse(ctx);
     }
     ctx.body = {
-      status: "success",
+      status: "Created",
       data: newProfile
     };
   }

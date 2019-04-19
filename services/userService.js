@@ -1,22 +1,25 @@
 const User = require("../models").User;
+const bcrypt = require("bcrypt");
 
 class UserService {
-  async create(ctx) {
-    const { body } = ctx.request;
+  async create(userRequest) {
     return await User.create({
-      firstName: body.firstName,
-      lastName: body.lastName,
-      email: body.email
+      ...userRequest,
+      password: await this.saltPassWord(userRequest.password)
     });
   }
 
   async getUserById(ctx) {
     const userId = ctx.params.id;
-    return await Message.findOne({
+    return await User.findOne({
       where: {
         id: userId
       }
     });
+  }
+
+  async saltPassWord(password) {
+    return await bcrypt.hash(password, 5);
   }
 }
 

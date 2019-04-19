@@ -4,32 +4,21 @@ class UserController {
   }
 
   async create(ctx) {
-    const newUser = await this.service.create(ctx);
+    const userRequest = ctx.request.body;
+    const newUser = await this.service.create(userRequest);
+    ctx.session.user = newUser;
     ctx.body = {
       status: "success",
-      data: newUser
+      data: newUser.id
     };
   }
 
   async find(ctx) {
-    const message = await this.service.getUserById(ctx);
-    if (message == null) {
-      return this._notFoundResponse(ctx);
+    const user = await this.service.getUserById(ctx);
+    if (user == null) {
+      ctx.throw(404, "user not found");
     }
-    this._returnMessage(ctx, message);
-  }
-
-  _notFoundResponse(ctx) {
-    ctx.status = 404;
-    ctx.body = {
-      err_msg: "Message not found"
-    };
-  }
-
-  _returnMessage(ctx, message) {
-    ctx.body = {
-      message: message.message
-    };
+    ctx.body = { status: "ok", data: user };
   }
 }
 
