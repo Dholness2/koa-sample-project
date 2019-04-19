@@ -21,8 +21,11 @@ brew install node
 npm install
 npm start
 ```
+
 ## Tips
-   App requires two session cookies for testing. Suggest using postman after regeistration for manually testing end points.
+
+App requires two session cookies for testing. Suggest using postman after regeistration for manually testing end points.
+
 ##
 
 To Run unit Tests:
@@ -73,7 +76,8 @@ npm test
 
 ##v2
 
-  1. path to register user:
+1. path to register user:
+
 
     ```
        POST http://localhost:3000/v2/register
@@ -89,7 +93,7 @@ npm test
     ```
 
     Responds with:
-     Authentication cookies: koa:sess= and koa:sess.sig=  
+     Authentication cookies: koa:sess= and koa:sess.sig=
      Response object users id:
 
     ```
@@ -101,28 +105,28 @@ npm test
 
 2. path to login:
 
-    ```
-       POST http://localhost:3000/v2/login
-    ```
+   ```
+      POST http://localhost:3000/v2/login
+   ```
 
-    expected Payload:
+   expected Payload:
 
-    ```
-      {"email": "dholness2@gmail.com",
-       "password": "password123" }
-    ```
+   ```
+     {"email": "dholness2@gmail.com",
+      "password": "password123" }
+   ```
 
-    Responds with:
-    Authentication cookies: koa:sess= and koa:sess.sig=  
-    
-    ```
-     {
-      "status": "success",
-      
-      }
-    ```
+   Responds with:
+   Authentication cookies: koa:sess= and koa:sess.sig=
 
-3.  path(include cookies to retrieve users, suggest postman for easy cookie mangement):
+   ```
+    {
+     "status": "success",
+
+     }
+   ```
+
+3. path(include cookies to retrieve users, suggest postman for easy cookie mangement):
 
 ```
   GET http://localhost:3000/v2/users/1
@@ -163,22 +167,24 @@ Response object will have legacey username payload instead of v2 firstName/lastN
     ```
     GET http://localhost:3000/v2/user/:id/likes?type=outgoing
     ```
-7. Path to create user profile:
+7.  Path to create user profile:
+
+````
+  POST http://localhost:3000/v2/profiles
   ```
-    POST http://localhost:3000/v2/profiles
-    ```
-    ExpectedPayload:
-    ```
-    {
-       "state": "foo",
-       "city": "bar",
-       "zip": 11003,
-       "dateOfBirth": "2016-01-01 00:00:00+00:00",
-       "userId":1
-       }
-    ```
+  ExpectedPayload:
+  ```
+  {
+     "state": "foo",
+     "city": "bar",
+     "zip": 11003,
+     "dateOfBirth": "2016-01-01 00:00:00+00:00",
+     "userId":1
+     }
+  ```
 8. Path to edit user Profile:
-   ```
+````
+
     PUT http://localhost:3000/v2/users/:id/profiles
     ```
     ExpectedPayload:
@@ -191,4 +197,3 @@ Response object will have legacey username payload instead of v2 firstName/lastN
        "user_id:":1
        }
     ```
-   
