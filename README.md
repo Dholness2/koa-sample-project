@@ -87,7 +87,7 @@ npm test
 
     ```
       {"firstName": "foo",
-        "lastName: "bar"
+        "lastName": "bar",
        "email": "dholness2@gmail.com",
        "password": "password123" }
     ```
@@ -179,7 +179,7 @@ Response object will have legacey username payload instead of v2 firstName/lastN
      "city": "bar",
      "zip": 11003,
      "dateOfBirth": "2016-01-01 00:00:00+00:00",
-     "userId":1
+     "UserId":1
      }
   ```
 8. Path to edit user Profile:
@@ -194,6 +194,5 @@ Response object will have legacey username payload instead of v2 firstName/lastN
        "city": "bar",
        "zip": 11003,
        "dateOfBirth": "2016-01-01 00:00:00+00:00",
-       "user_id:":1
        }
     ```

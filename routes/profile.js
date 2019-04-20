@@ -13,7 +13,7 @@ profileRouter
   .get("/profiles/:id", async ctx => {
     return await controller.show(ctx);
   })
-  .put("users/:id/profiles", async ctx => {
+  .put("/users/:id/profiles", async ctx => {
     return await controller.update(ctx);
   });
 

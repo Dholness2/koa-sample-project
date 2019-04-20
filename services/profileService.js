@@ -2,16 +2,25 @@ const Profile = require("../models").Profile;
 
 class ProfileService {
   async create(body) {
-    return await Profile.findOrCreate({ ...body });
+    return await Profile.findOrCreate({
+      where: { id: body.UserId },
+      defaults: { ...body }
+    });
   }
 
   async update(body, userId) {
-    const profile = await Profile.findOne({
-      where: {
-        user_id: userId
+    return await Profile.update(
+      {
+        state: body.state,
+        city: body.city,
+        zip: body.zip,
+        dateOfBirth: body.dateOfBirth
+      },
+      {
+        returning: true,
+        where: { UserId: userId }
       }
-    });
-    return await profile.update(body);
+    );
   }
 
   async getById(profileId) {

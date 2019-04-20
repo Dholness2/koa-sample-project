@@ -13,8 +13,8 @@ likeRouter
   .get("/likes/:id", async ctx => {
     return await controller.find(ctx);
   })
-  .get("/users/:id/likes/type", async ctx => {
-    return await controller.findRequest(ctx);
+  .get("/users/:id/likes", async ctx => {
+    return await controller.findIncoming(ctx);
   });
 
 module.exports = likeRouter;

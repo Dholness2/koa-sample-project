@@ -19,7 +19,6 @@ function buildRouter(prefix) {
   router.prefix(prefix);
   router
     .post("/login", async ctx => {
-      console.log("in route");
       return await authenticationController.create(ctx);
     })
     .post("/register", async ctx => {

@@ -4,7 +4,7 @@ class LikeController {
   }
 
   async create(ctx) {
-    const newLike = await this.service.create(ctx.body);
+    const newLike = await this.service.create(ctx.request.body);
     ctx.body = {
       status: "created",
       data: newLike
@@ -23,7 +23,9 @@ class LikeController {
   }
 
   async findIncoming(ctx) {
-    const { id, type } = ctx.params;
+    console.log(ctx);
+    const id = ctx.params.id;
+    const type = ctx.query.type;
     switch (type) {
       case "incoming":
         return this._foundResponse(

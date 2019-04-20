@@ -65,7 +65,8 @@ describe("Like Controller", function() {
     const ctx = {
       body: "",
       path: "v2/users/2/likes?type=incoming",
-      params: { id: 2, type: "incoming" }
+      params: { id: 2 },
+      query: { type: "incoming" }
     };
     const expectedResult = {
       data: {
@@ -94,7 +95,8 @@ describe("Like Controller", function() {
     const ctx = {
       body: "",
       path: "v2/users/2/likes?type=outgoing",
-      params: { id: 2, type: "outgoing" }
+      params: { id: 2 },
+      query: { type: "outgoing" }
     };
     const expectedResult = {
       data: {
